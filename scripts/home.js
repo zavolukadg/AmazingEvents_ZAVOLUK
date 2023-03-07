@@ -34,7 +34,7 @@ if(eventosCompletos.length != 0){
             </div>
             <div class="clearfix pb-3">
                 <p class="float-start mx-3">Price: $${evento.price}</p>
-                <a href="./details#${evento._id}.html" class="btn btncard float-end me-3">See More...</a>
+                <a href="./details.html?id=${evento._id}" class="btn btncard float-end me-3">See More...</a>
             </div>
         </div>`
     }
