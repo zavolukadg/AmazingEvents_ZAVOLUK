@@ -16,10 +16,14 @@ header, footer{
     color: #e0046c;
 }
 
-body {
-    padding-left: 50px;
-    padding-right: 50px;
-    /* background-color: aqua; */
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer{
+    margin-top: auto;
 }
 
 #logo{
