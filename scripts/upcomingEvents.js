@@ -22,7 +22,7 @@ eventosFuturos.forEach(evento => {
 console.log(fragment);
 contenedorTarjetas.appendChild(fragment);
 
-/* let eventosFiltrado;
-function filtrarEventos(){
+let eventosFiltrado;
+/* function filtrarEventos(){
     eventosFuturos = eventosFuturos.filter(evento => evento.category == );  
 } */
