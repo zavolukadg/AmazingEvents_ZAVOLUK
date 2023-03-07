@@ -14,6 +14,7 @@ eventosFuturos.forEach(evento => {
     template.getElementById("title").textContent = evento.name;
     template.getElementById("description").textContent = evento.description;
     template.getElementById("price").textContent = "$" + evento.price;
+    template.getElementById("url-detail").href = "./details.html?id="+ evento._id;
 
     const nodo = template.cloneNode(true);
     fragment.appendChild(nodo);
