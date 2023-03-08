@@ -8,9 +8,15 @@ const id = urlSearchParams.get("id");
 let eventoSeleccionado = allEvents.find(evento => evento._id == id);
 const tarjetaDetalle = document.getElementById("tarjetas-detail");
 
+let fechaAuxiliar = new Date(eventoSeleccionado.date);
+fechaAuxiliar.setDate(fechaAuxiliar.getDate() + 1);
+let fechaEvento = fechaAuxiliar.toLocaleDateString();
+/* fechaEvento.setMinutes(fechaEvento.getMinutes() + fechaEvento.getTimezoneOffset()); */
+/* let fechaCorregida = fechaEvento */
+
 let tarjeta = 
     `<div class="col col-sm-7">
-        <img class="rounded-4 shadow" src="${eventoSeleccionado.image}" alt="card1">
+        <img class="rounded-4 shadow" src="${eventoSeleccionado.image}" alt="cardImage">
     </div>
     <div class="col">
         <div class="row p-2">
@@ -19,7 +25,7 @@ let tarjeta =
         </div>
         <div class="row p-2">
             <div class="col-3"><label><b>Date:</b></label></div>
-            <div class="col">${eventoSeleccionado.date}</div>
+            <div class="col">${fechaEvento}</div>
         </div>
         <div class="row p-2">
             <div class="col-5"><label><b>Description:</b></label></div>
@@ -35,13 +41,12 @@ let tarjeta =
         </div>
         <div class="row p-2">
             <div class="col-4"><label><b>Capacity:</b></label></div>
-            <div class="col">${eventoSeleccionado.capacity}</div>
+            <div class="col">${eventoSeleccionado.capacity} Persons</div>
         </div>
         <div class="row p-2">
             <div class="col-3"><label><b>Price:</b></label></div>
-            <div class="col">${eventoSeleccionado.price}</div>
+            <div class="col">$${eventoSeleccionado.price}</div>
         </div>
     </div>`
 
-console.log("Tarjeta: " + tarjeta);
 tarjetaDetalle.innerHTML = tarjeta;
