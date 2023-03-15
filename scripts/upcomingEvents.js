@@ -1,41 +1,33 @@
 import data from "./amazing.js";
+import {getAllEvents,getUpcomingEvents} from "./functions.js";
+import {createCardsTemplate} from "./cards.js";
+import {getCategories} from "./categories.js";
+import {doubleSearch,checksFilter} from "./searchFunctions.js";
 
-let allEvents = data.events;
-let date = data.currentDate;
+let upcomingEvents = getUpcomingEvents(data);
+let allEvents = getAllEvents(data); 
+createCardsTemplate(upcomingEvents);
+getCategories(allEvents);
 
-let eventosFuturos = allEvents.filter(evento => evento.date > date); 
+const btnBuscador = document.getElementById("btnBuscador");
+const search = document.querySelector('#textSearch');
+const checksContainer = document.getElementById("checks-container");
 
-
-const template = document.querySelector("#card-template").content;
-const fragment = document.createDocumentFragment();
-const contenedorTarjetas = document.querySelector("#tarjetas-container");
-
-function colocarTarjetas(){
-    eventosFuturos.forEach(evento => {
-        template.querySelector("#image").src = evento.image;
-        template.getElementById("title").textContent = evento.name;
-        template.getElementById("description").textContent = evento.description;
-        template.getElementById("price").textContent = "$" + evento.price;
-        template.getElementById("url-detail").href = "./details.html?id="+ evento._id;
-    
-        const nodo = template.cloneNode(true);
-        fragment.appendChild(nodo);
-    });
-    contenedorTarjetas.appendChild(fragment);
-    console.log("Finaliza colocar tarjetas");
+btnBuscador.onclick = () =>{
+    let eventosFIltrado = doubleSearch(upcomingEvents);
+    createCardsTemplate(eventosFIltrado);
 }
 
-/* colocarTarjetas(); */
+checksContainer.addEventListener('change', (event) => {
+    let eventosFIltrado = doubleSearch(upcomingEvents);
+    createCardsTemplate(eventosFIltrado);
+});
+
+search.addEventListener('keyup', () => {
+    if(search.value == null || search.value == undefined || search.value == ""){
+        let eventosFiltrados = checksFilter(upcomingEvents);
+        createCardsTemplate(eventosFiltrados);    
+    }
+});
 
 
-let eventosFiltrado;
-function filtrar(){
-    let keywordToSearch = document.getElementById("textSearch").textContent; 
-    let keyword =   keywordToSearch.toLowerCase();
-    eventosFuturos = eventosFuturos.filter(evento => evento.name.toLowerCase().indexOf(keyword) > -1);
-    colocarTarjetas();
-}
-
-/* function filtrarEventos(){
-    eventosFuturos = eventosFuturos.filter(evento => evento.category == );  
-} */

@@ -92,4 +92,9 @@ h2.titulo{
     height: 40vh;
 }
 
+#headerCard{
+    background-color: #212B50;
+    color: antiquewhite; 
+}
+
 

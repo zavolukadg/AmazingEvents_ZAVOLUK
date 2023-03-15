@@ -8,11 +8,10 @@ const id = urlSearchParams.get("id");
 let eventoSeleccionado = allEvents.find(evento => evento._id == id);
 const tarjetaDetalle = document.getElementById("tarjetas-detail");
 
+//Se utiliza para modificar el formato de la fecha a DD/MM/AAAA
 let fechaAuxiliar = new Date(eventoSeleccionado.date);
 fechaAuxiliar.setDate(fechaAuxiliar.getDate() + 1);
 let fechaEvento = fechaAuxiliar.toLocaleDateString();
-/* fechaEvento.setMinutes(fechaEvento.getMinutes() + fechaEvento.getTimezoneOffset()); */
-/* let fechaCorregida = fechaEvento */
 
 let tarjeta = 
     `<div class="col col-sm-7">
