@@ -1,11 +1,10 @@
-import data from "./amazing.js";
 import {getAllEvents,getUpcomingEvents} from "./functions.js";
 import {createCardsTemplate} from "./cards.js";
 import {getCategories} from "./categories.js";
 import {doubleSearch,checksFilter} from "./searchFunctions.js";
 
-let upcomingEvents = getUpcomingEvents(data);
-let allEvents = getAllEvents(data); 
+let upcomingEvents = await getUpcomingEvents();
+let allEvents = await getAllEvents(); 
 createCardsTemplate(upcomingEvents);
 getCategories(allEvents);
 

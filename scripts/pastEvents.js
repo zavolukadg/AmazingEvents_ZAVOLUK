@@ -1,11 +1,11 @@
-import data from "./amazing.js";
 import {getAllEvents, getPastEvents} from "./functions.js";
 import {createCards} from "./cards.js";
 import {getCategories} from "./categories.js";
 import {doubleSearch,checksFilter} from "./searchFunctions.js";
 
-let pastEvents = getPastEvents(data);
-let allEvents = getAllEvents(data); 
+let pastEvents = await getPastEvents();
+let allEvents = await getAllEvents(); 
+
 createCards(pastEvents);
 getCategories(allEvents);
 
@@ -30,4 +30,16 @@ search.addEventListener('keyup', () => {
     }
 });
 
+/* let imgBatman = document.getElementById('imgBatman');
+let hearbeat = document.getElementById('heartbeat');
+let audios = document.querySelectorAll('audio');
+
+imgBatman.addEventListener('mouseover', function() {
+    hearbeat.play();
+}, false);
+
+imgBatman.addEventListener('mouseleave', function() {
+    hearbeat.pause();
+    hearbeat.currentTime = 0;
+}, false); */
 
