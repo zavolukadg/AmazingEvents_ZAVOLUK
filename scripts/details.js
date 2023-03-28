@@ -14,7 +14,7 @@ fechaAuxiliar.setDate(fechaAuxiliar.getDate() + 1);
 let fechaEvento = fechaAuxiliar.toLocaleDateString();
 
 let tarjeta = 
-    `<div class="col">
+    `<div class="col ">
         <img class="rounded-4 shadow" src="${eventoSeleccionado.image}" alt="cardImage">
     </div>
     <div class="col">

@@ -50,8 +50,8 @@ function createCards(eventos){
     divTarjetas.innerHTML = tarjetas;
 }
 
-function createCardsTemplate(eventos){
-    const template = document.querySelector("#card-template").content;
+function createCardsTemplate(eventos,template){
+    /* const template = document.querySelector("#card-template").content; */
     const contenedorTarjetas = document.querySelector("#tarjetas-container");
     const fragment = document.createDocumentFragment();
 
